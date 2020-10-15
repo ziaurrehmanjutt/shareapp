@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { WebIntent } from '@ionic-native/web-intent/ngx';
 
 @Component({
   selector: 'app-home',
@@ -7,6 +8,26 @@ import { Component } from '@angular/core';
 })
 export class HomePage {
 
-  constructor() {}
+  constructor(private webIntent: WebIntent) {
+
+
+
+
+    const options = {
+      action: this.webIntent.ACTION_SEND,
+      url: 'path/to/file',
+      type: 'application/pdf'
+    }
+
+    this.webIntent.startActivity(options).then((data)=> {
+        console.log(data);
+    }, (data1)=> {
+      console.log(data1);
+    });
+
+    this.webIntent.getUri().then(data => {
+      console.log(data);
+    })
+  }
 
 }

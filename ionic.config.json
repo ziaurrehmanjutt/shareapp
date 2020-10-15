@@ -1,5 +1,7 @@
 {
   "name": "file_share_open",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }
